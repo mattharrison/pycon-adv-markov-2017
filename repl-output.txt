@@ -1,0 +1,1069 @@
+Python 3.6.0 (default, Dec 24 2016, 08:01:42) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.42.1)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> WARNING: The version of Tcl/Tk (8.5.9) in use may be unstable.
+Visit http://www.python.org/download/mac/tcltk/ for current information.
+
+>>> 2 + 2
+4
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> m = Markov('Find a city, find yourself a city to live in')
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'argparse', 'get_table', 'm', 'main', 'random', 'repl', 'sys', 'test_predict']
+>>> m.predict('i')
+'t'
+>>> m.predict('t')
+'o'
+>>> m.predict('o')
+'u'
+>>> m.predict('u')
+'r'
+>>> test_predict(m, 100)
+Traceback (most recent call last):
+  File "<pyshell#8>", line 1, in <module>
+    test_predict(m, 100)
+TypeError: test_predict() missing 1 required positional argument: 'start'
+>>> test_predict(m, 100, 'F')
+'Fitourse civelf livelitourse lity, ty a fityourself find cind ind cind ityo lind a live lf ind cind f'
+>>> m2 = Markov('Find a city, find yourself a city to live in', 4)
+>>> test_predict(m2, 100, 'F', 4)
+Traceback (most recent call last):
+  File "<pyshell#11>", line 1, in <module>
+    test_predict(m2, 100, 'F', 4)
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 74, in test_predict
+    let = m.predict(start)
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 46, in predict
+    raise KeyError()
+KeyError
+>>> test_predict(m2, 100, 'i', 4)
+Traceback (most recent call last):
+  File "<pyshell#12>", line 1, in <module>
+    test_predict(m2, 100, 'i', 4)
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 74, in test_predict
+    let = m.predict(start)
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 46, in predict
+    raise KeyError()
+KeyError
+>>> m2.tables
+[{'F': {'i': 1}, 'i': {'n': 3, 't': 2, 'v': 1}, 'n': {'d': 2}, 'd': {' ': 2}, ' ': {'a': 2, 'c': 2, 'f': 1, 'y': 1, 't': 1, 'l': 1, 'i': 1}, 'a': {' ': 2}, 'c': {'i': 2}, 't': {'y': 2, 'o': 1}, 'y': {',': 1, 'o': 1, ' ': 1}, ',': {' ': 1}, 'f': {'i': 1, ' ': 1}, 'o': {'u': 1, ' ': 1}, 'u': {'r': 1}, 'r': {'s': 1}, 's': {'e': 1}, 'e': {'l': 1, ' ': 1}, 'l': {'f': 1, 'i': 1}, 'v': {'e': 1}}, {'Fi': {'n': 1}, 'F': {'n': 1}, 'in': {'d': 2}, 'i': {'e': 1}, 'nd': {' ': 2}, 'n': {' ': 2}, 'd ': {'a': 1, 'y': 1}, 'd': {'a': 1, 'y': 1}, ' a': {' ': 2}, ' ': {'n': 1}, 'a ': {'c': 2}, 'a': {'c': 2}, ' c': {'i': 2}, 'ci': {'t': 2}, 'c': {'t': 2}, 'it': {'y': 2}, 'ty': {',': 1, ' ': 1}, 't': {' ': 1}, 'y,': {' ': 1}, 'y': {'t': 1}, ', ': {'f': 1}, ',': {'f': 1}, ' f': {'i': 1}, 'fi': {'n': 1}, 'f': {'a': 1}, ' y': {'o': 1}, 'yo': {'u': 1}, 'ou': {'r': 1}, 'o': {'l': 1}, 'ur': {'s': 1}, 'u': {'s': 1}, 'rs': {'e': 1}, 'r': {'e': 1}, 'se': {'l': 1}, 's': {'l': 1}, 'el': {'f': 1}, 'e': {'i': 1}, 'lf': {' ': 1}, 'l': {'v': 1}, 'f ': {'a': 1}, 'y ': {'t': 1}, ' t': {'o': 1}, 'to': {' ': 1}, 'o ': {'l': 1}, ' l': {'i': 1}, 'li': {'v': 1}, 'iv': {'e': 1}, 've': {' ': 1}, 'v': {' ': 1}, 'e ': {'i': 1}, ' i': {'n': 1}}, {'Fin': {'d': 1}, 'F': {'d': 1}, 'ind': {' ': 2}, 'i': {' ': 1}, 'nd ': {'a': 1, 'y': 1}, 'n': {'a': 1, 'y': 1}, 'd a': {' ': 1}, 'd': {'o': 1}, ' a ': {'c': 2}, ' ': {'v': 1}, 'a c': {'i': 2}, 'a': {'i': 2}, ' ci': {'t': 2}, 'cit': {'y': 2}, 'c': {'y': 2}, 'ity': {',': 1, ' ': 1}, 'ty,': {' ': 1}, 't': {'l': 1}, 'y, ': {'f': 1}, 'y': {'o': 1}, ', f': {'i': 1}, ',': {'i': 1}, ' fi': {'n': 1}, 'fin': {'d': 1}, 'f': {' ': 1}, 'd y': {'o': 1}, ' yo': {'u': 1}, 'you': {'r': 1}, 'our': {'s': 1}, 'o': {'i': 1}, 'urs': {'e': 1}, 'u': {'e': 1}, 'rse': {'l': 1}, 'r': {'l': 1}, 'sel': {'f': 1}, 's': {'f': 1}, 'elf': {' ': 1}, 'e': {'n': 1}, 'lf ': {'a': 1}, 'l': {'e': 1}, 'f a': {' ': 1}, 'ty ': {'t': 1}, 'y t': {'o': 1}, ' to': {' ': 1}, 'to ': {'l': 1}, 'o l': {'i': 1}, ' li': {'v': 1}, 'liv': {'e': 1}, 'ive': {' ': 1}, 've ': {'i': 1}, 'v': {'i': 1}, 'e i': {'n': 1}}, {'Find': {' ': 1}, 'F': {' ': 1}, 'ind ': {'a': 1, 'y': 1}, 'i': {'i': 1}, 'nd a': {' ': 1}, 'n': {'o': 1}, 'd a ': {'c': 1}, 'd': {'u': 1}, ' a c': {'i': 2}, ' ': {'e': 1}, 'a ci': {'t': 2}, 'a': {'t': 2}, ' cit': {'y': 2}, 'city': {',': 1, ' ': 1}, 'c': {',': 1, ' ': 1}, 'ity,': {' ': 1}, 'ty, ': {'f': 1}, 't': {'i': 1}, 'y, f': {'i': 1}, 'y': {' ': 1}, ', fi': {'n': 1}, ',': {'n': 1}, ' fin': {'d': 1}, 'find': {' ': 1}, 'f': {'c': 1}, 'nd y': {'o': 1}, 'd yo': {'u': 1}, ' you': {'r': 1}, 'your': {'s': 1}, 'ours': {'e': 1}, 'o': {'v': 1}, 'urse': {'l': 1}, 'u': {'l': 1}, 'rsel': {'f': 1}, 'r': {'f': 1}, 'self': {' ': 1}, 's': {' ': 1}, 'elf ': {'a': 1}, 'e': {'a': 1}, 'lf a': {' ': 1}, 'l': {' ': 1}, 'f a ': {'c': 1}, 'ity ': {'t': 1}, 'ty t': {'o': 1}, 'y to': {' ': 1}, ' to ': {'l': 1}, 'to l': {'i': 1}, 'o li': {'v': 1}, ' liv': {'e': 1}, 'live': {' ': 1}, 'ive ': {'i': 1}, 've i': {'n': 1}, 'v': {'n': 1}}]
+>>> test_predict(m2, 100, 'i')
+'ind ind ind a tourse f a lf find ito f civelind cind cind f find ind ind a cito lfind cind ivelfind c'
+>>> test_predict(m2, 100, 'i', 2)
+'ity, find a city to live ind a city to live ind yourself a city to live ind yourself a city, find you'
+>>> test_predict(m2, 100, 'i', 3)
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    test_predict(m2, 100, 'i', 3)
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 74, in test_predict
+    let = m.predict(start)
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 46, in predict
+    raise KeyError()
+KeyError
+>>> test_predict(m2, 100, 'i', 2)
+'ity to live ind a city to live ind a city, find a city to live ind yourself a city, find a city to li'
+>>> repl(m2, 4)
+>i
+t
+>it
+y
+>ity
+,
+>
+Traceback (most recent call last):
+  File "<pyshell#18>", line 1, in <module>
+    repl(m2, 4)
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 85, in repl
+    txt = input(">")
+KeyboardInterrupt
+>>> 'a' * 5
+'aaaaa'
+>>> data = [1, 2, 3]
+>>> for thing in data:
+	print(thing)
+
+	
+1
+2
+3
+>>> it = iter(data)
+>>> it
+<list_iterator object at 0x10b2c2e10>
+>>> next(it)
+1
+>>> next(it)
+2
+>>> next(it)
+3
+>>> next(it)
+Traceback (most recent call last):
+  File "<pyshell#29>", line 1, in <module>
+    next(it)
+StopIteration
+>>> data
+[1, 2, 3]
+>>> type(data)
+<class 'list'>
+>>> dir(data)
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+>>> it = data.__iter__()
+>>> it
+<list_iterator object at 0x10b2c2f28>
+>>> dir(it)
+['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__length_hint__', '__lt__', '__ne__', '__new__', '__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__']
+>>> it.__next__()  # next(it)
+1
+>>> it.__next__()  # next(it)
+2
+>>> it.__next__()  # next(it)
+3
+>>> it.__next__()  # next(it)
+Traceback (most recent call last):
+  File "<pyshell#39>", line 1, in <module>
+    it.__next__()  # next(it)
+StopIteration
+>>> iter
+<built-in function iter>
+>>> data[2]
+3
+>>> data
+[1, 2, 3]
+>>> data[3]
+Traceback (most recent call last):
+  File "<pyshell#43>", line 1, in <module>
+    data[3]
+IndexError: list index out of range
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> dir()
+['CharIter', 'Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'argparse', 'get_table', 'main', 'random', 'repl', 'sys', 'test_predict']
+>>> c = CharIter(['hello', 'world'])
+>>> for letter in CharIter:
+	print(letter)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#48>", line 1, in <module>
+    for letter in CharIter:
+TypeError: 'type' object is not iterable
+>>> for letter in c:
+	print(letter)
+
+	
+h
+e
+l
+l
+o
+w
+o
+r
+l
+d
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+E
+======================================================================
+ERROR: test_char_iter (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 6, in test_char_iter
+    c = CharIter(lines)
+NameError: name 'CharIter' is not defined
+
+----------------------------------------------------------------------
+Ran 1 test in 0.018s
+
+FAILED (errors=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+
+Warning (from warnings module):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 10
+    self.assertEquals(res, ['a','b'])
+DeprecationWarning: Please use assertEqual instead.
+F
+======================================================================
+FAIL: test_char_iter (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 10, in test_char_iter
+    self.assertEquals(res, ['a','b'])
+AssertionError: Lists differ: ['a', 'b', 'c', 'd', 'e', 'f'] != ['a', 'b']
+
+First list contains 4 additional elements.
+First extra element 2:
+'c'
+
+- ['a', 'b', 'c', 'd', 'e', 'f']
++ ['a', 'b']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.043s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.014s
+
+OK
+>>> data = ['abc', 'def']
+>>> chars = []
+>>> for line in data:
+	for c in line:
+		chars.append(c)
+
+		
+>>> chars
+['a', 'b', 'c', 'd', 'e', 'f']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> b = blastoff()
+>>> type(b)
+<class 'generator'>
+>>> b
+<generator object blastoff at 0x1082bf360>
+>>> dir(b)
+['__class__', '__del__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__name__', '__ne__', '__new__', '__next__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'close', 'gi_code', 'gi_frame', 'gi_running', 'gi_yieldfrom', 'send', 'throw']
+>>> bit = iter(b)
+>>> bit
+<generator object blastoff at 0x1082bf360>
+>>> res = next(b)
+Hi
+>>> res
+1
+>>> res = next(b)
+after 1
+>>> res
+2
+>>> res = next(b)
+Goodbye
+Traceback (most recent call last):
+  File "<pyshell#68>", line 1, in <module>
+    res = next(b)
+StopIteration
+>>> for thing in blastoff():
+	print(thing)
+
+	
+Hi
+1
+after 1
+2
+Goodbye
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> lines = ['hello', 'world']
+>>> c_gen = char_iter(lines)
+>>> for c in c_gen:
+	print(c)
+
+	
+h
+e
+l
+l
+o
+w
+o
+r
+l
+d
+>>> for c in c_gen:
+	print(c)
+
+	
+>>> for c in c_gen:
+	print(c)
+
+	
+>>> bool([])
+False
+>>> data
+Traceback (most recent call last):
+  File "<pyshell#82>", line 1, in <module>
+    data
+NameError: name 'data' is not defined
+>>> lines
+['hello', 'world']
+>>> bool(lines)
+True
+>>> bool(c_gen)
+True
+>>> c_gen = char_iter(lines)
+>>> animals = ['dog', 'cat', 'bird']
+>>> animals[1:2]
+['cat']
+>>> animals[1:3]
+['cat', 'bird']
+>>> c_gen[1:3]
+Traceback (most recent call last):
+  File "<pyshell#90>", line 1, in <module>
+    c_gen[1:3]
+TypeError: 'generator' object is not subscriptable
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+E.
+======================================================================
+ERROR: test_char_gen (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 14, in test_char_gen
+    c = mar.char_gen(lines)
+AttributeError: module 'markov' has no attribute 'char_gen'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.027s
+
+FAILED (errors=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.027s
+
+OK
+>>> import unittest
+>>> dir(unittest)
+['BaseTestSuite', 'FunctionTestCase', 'SkipTest', 'TestCase', 'TestLoader', 'TestProgram', 'TestResult', 'TestSuite', 'TextTestResult', 'TextTestRunner', '_TextTestResult', '__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__unittest', 'case', 'defaultTestLoader', 'expectedFailure', 'findTestCases', 'getTestCaseNames', 'installHandler', 'load_tests', 'loader', 'main', 'makeSuite', 'registerResult', 'removeHandler', 'removeResult', 'result', 'runner', 'signals', 'skip', 'skipIf', 'skipUnless', 'suite', 'util']
+>>> 
+>>> 
+>>> line = 'hello world'
+>>> dir(line)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> line.split()
+['hello', 'world']
+>>> line
+'hello world'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..F
+======================================================================
+FAIL: test_word_gen (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 22, in test_word_gen
+    self.assertEqual(res, [])
+AssertionError: Lists differ: ['hello', 'world', 'bye', 'matt'] != []
+
+First list contains 4 additional elements.
+First extra element 0:
+'hello'
+
+- ['hello', 'world', 'bye', 'matt']
++ []
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.046s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.047s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..E.
+======================================================================
+ERROR: test_window (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 27, in test_window
+    win = mar.window_gen(w)
+AttributeError: module 'markov' has no attribute 'window_gen'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.064s
+
+FAILED (errors=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..E.
+======================================================================
+ERROR: test_window (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 27, in test_window
+    win = mar.window_gen(w)
+TypeError: window_gen() missing 1 required positional argument: 'size'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.060s
+
+FAILED (errors=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..F.
+======================================================================
+FAIL: test_window (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 29, in test_window
+    self.assertEqual(res, ['hello', 'world', 'bye', 'matt'])
+AssertionError: Lists differ: [['hello', 'world'], ['world', 'bye'], ['bye', 'matt']] != ['hello', 'world', 'bye', 'matt']
+
+First differing element 0:
+['hello', 'world']
+'hello'
+
+Second list contains 1 additional elements.
+First extra element 3:
+'matt'
+
+- [['hello', 'world'], ['world', 'bye'], ['bye', 'matt']]
+? -          -----------         ---------              -
+
++ ['hello', 'world', 'bye', 'matt']
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.064s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.064s
+
+OK
+>>> ['a', 'b']
+['a', 'b']
+>>> ['a', 'b'][:1]
+['a']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..E..
+======================================================================
+ERROR: test_get_table (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 34, in test_get_table
+    t = mar.get_table(mar.char_gen(lines))
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 113, in get_table
+    inner_dict[ouput] += 1
+NameError: name 'ouput' is not defined
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.080s
+
+FAILED (errors=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..F..
+======================================================================
+FAIL: test_get_table (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 35, in test_get_table
+    self.assertEqual(t, {})
+AssertionError: {'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}} != {}
+- {'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}}
++ {}
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.079s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.081s
+
+OK
+>>> 2 + 3
+5
+>>> type(2)
+<class 'int'>
+>>> id(2)
+4396743184
+>>> 2.__add__(3)
+SyntaxError: invalid syntax
+>>> (2)
+2
+>>> (2).__add__
+<method-wrapper '__add__' of int object at 0x10610fa10>
+>>> (2).__add__(3)
+5
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+ 
+>>> 
+EXECUTED
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.081s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..E...
+======================================================================
+ERROR: test_cmarkov (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 34, in test_cmarkov
+    m = mar.CharMarkov(lines, 3)
+AttributeError: module 'markov' has no attribute 'CharMarkov'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.098s
+
+FAILED (errors=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..F...
+======================================================================
+FAIL: test_cmarkov (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 35, in test_cmarkov
+    self.assertEqual(m.tables, [])
+AssertionError: Lists differ: [{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d':[38 chars], {}] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}}
+
++ []
+- [{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}},
+-  {},
+-  {}]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.095s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..TABLE [{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}}, {}, {}]
+F...
+======================================================================
+FAIL: test_cmarkov (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 37, in test_cmarkov
+    self.assertEqual(m.tables, [])
+AssertionError: Lists differ: [{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d':[38 chars], {}] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}}
+
++ []
+- [{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}},
+-  {},
+-  {}]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.198s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..TABLE [{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}}, {}, {}]
+F...
+======================================================================
+FAIL: test_cmarkov (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 37, in test_cmarkov
+    self.assertEqual(m.tables, [])
+AssertionError: Lists differ: [{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d':[38 chars], {}] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}}
+
++ []
+- [{'a': {'b': 1}, 'b': {'c': 1}, 'c': {'d': 1}, 'd': {'e': 1}, 'e': {'f': 1}},
+-  {},
+-  {}]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.193s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..E...
+======================================================================
+ERROR: test_cmarkov (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 35, in test_cmarkov
+    m = mar.CharMarkov(lines, 3)
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 103, in __init__
+    self.tables = get_tables(data, size)
+NameError: name 'data' is not defined
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.096s
+
+FAILED (errors=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..TABLE []
+....
+----------------------------------------------------------------------
+Ran 6 tests in 0.179s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..TABLE [{'a': Counter({'b': 1}), 'b': Counter({'c': 1}), 'c': Counter({'d': 1})}, {'ab': Counter({'c': 1}), 'bc': Counter({'d': 1}), 'cd': Counter({'e': 1})}, {'abc': Counter({'d': 1}), 'bcd': Counter({'e': 1}), 'cde': Counter({'f': 1})}]
+F...
+======================================================================
+FAIL: test_cmarkov (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py", line 37, in test_cmarkov
+    self.assertEqual(m.tables, [])
+AssertionError: Lists differ: [{'a': Counter({'b': 1}), 'b': Counter({'c[184 chars]1})}] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+{'a': Counter({'b': 1}), 'b': Counter({'c': 1}), 'c': Counter({'d': 1})}
+
++ []
+- [{'a': Counter({'b': 1}), 'b': Counter({'c': 1}), 'c': Counter({'d': 1})},
+-  {'ab': Counter({'c': 1}), 'bc': Counter({'d': 1}), 'cd': Counter({'e': 1})},
+-  {'abc': Counter({'d': 1}), 'bcd': Counter({'e': 1}), 'cde': Counter({'f': 1})}]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.196s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/testmarkov.py 
+IMPORTED
+..TABLE [{'a': Counter({'b': 1}), 'b': Counter({'c': 1}), 'c': Counter({'d': 1})}, {'ab': Counter({'c': 1}), 'bc': Counter({'d': 1}), 'cd': Counter({'e': 1})}, {'abc': Counter({'d': 1}), 'bcd': Counter({'e': 1}), 'cde': Counter({'f': 1})}]
+....
+----------------------------------------------------------------------
+Ran 6 tests in 0.200s
+
+OK
+>>> def adder(x, y):
+	"""returns x + y"""
+	return x + y
+
+>>> adder
+<function adder at 0x10f81eae8>
+>>> dir(adder)
+['__annotations__', '__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__get__', '__getattribute__', '__globals__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__kwdefaults__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> adder.__doc__
+'returns x + y'
+>>> adder.__name__
+'adder'
+>>> adder.__call__(2, 4)
+6
+>>> args = (2, 3)
+>>> kwargs = {'x':4, 'y':7}
+>>> adder(2, 4)
+6
+>>> adder(*args)
+5
+>>> adder(args[0], args[1])
+5
+>>> adder(**kwargs)
+11
+>>> adder(x=kwargs['x'], y=kwargs['y'])
+11
+>>> def foo(*args, **kwargs):
+	print(args, kwargs)
+
+	
+>>> m = dict(zip('mt', [3, 4]))
+>>> m
+{'m': 3, 't': 4}
+>>> adder(**m)
+Traceback (most recent call last):
+  File "<pyshell#130>", line 1, in <module>
+    adder(**m)
+TypeError: adder() got an unexpected keyword argument 'm'
+>>> foo()
+() {}
+>>> foo(2, 3)
+(2, 3) {}
+>>> foo(2, 3, matt='cool')
+(2, 3) {'matt': 'cool'}
+>>> 
+>>> def add10(x):
+	return x + 10
+
+>>> add10(5)
+15
+>>> def addtxt(x):
+	return x + '.txt'
+
+>>> addtxt('report')
+'report.txt'
+>>> def create_adder(val):
+	def add(x):
+		return x + val
+	return add
+
+>>> a10 = create_adder(10)
+>>> a10
+<function create_adder.<locals>.add at 0x1125a5a60>
+>>> a10(7)
+17
+>>> atxt = create_adder(.txt)
+SyntaxError: invalid syntax
+>>> atxt = create_adder('.txt')
+>>> atxt('report')
+'report.txt'
+>>> def iden(func):
+	return func
+
+>>> adder
+<function adder at 0x10f81eae8>
+>>> adder2 = iden(adder)
+>>> adder2
+<function adder at 0x10f81eae8>
+>>> help(adder2)
+Help on function adder in module __main__:
+
+adder(x, y)
+    returns x + y
+
+>>> adder2(4, 5)
+9
+>>> def iden2(f):
+	def inner(*args, **kwargs):
+		res = f(*args, **kwargs)
+		return res
+	return inner
+
+>>> adder3 = iden2(adder)
+>>> adder3
+<function iden2.<locals>.inner at 0x1125a5c80>
+>>> adder3(3, 4)
+7
+>>> def iden3(f):
+	def inner(*args, **kwargs):
+		# before
+		print("Before")
+		res = f(*args, **kwargs)
+		# after
+		print("After")
+		return res
+	return inner
+
+>>> adder4 = iden3(adder)
+>>> adder(10, 12)
+22
+>>> adder4(10, 12)
+Before
+After
+22
+>>> def iden3(f):
+	@functools.wraps(f)
+	def inner(*args, **kwargs):
+		# before
+		print("Before")
+		res = f(*args, **kwargs)
+		# after
+		print("After")
+		return res
+	return inner
+
+>>> import functools
+>>> 
+>>> @iden3
+def sub(x, y):
+	return x - y
+
+>>> sub(5, 4)
+Before
+After
+1
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 79, in <module>
+    @timer
+  File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 68, in timer
+    @functools.wraps(f)
+NameError: name 'functools' is not defined
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> dir()
+['CharIter', 'CharMarkov', 'Counter', 'Markov', 'WordMarkov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'adder', 'argparse', 'blastoff', 'char_gen', 'functools', 'get_table', 'get_tables', 'main', 'noisy', 'random', 'repl', 'sleep', 'sys', 'test_predict', 'time', 'timer', 'window_gen', 'word_gen']
+>>> sleep(5)
+Took 5.0049889087677 seconds
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 6, in __main__
+Failed example:
+    m.predict('a')
+Expected:
+    'b'
+Got:
+    42
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 9, in __main__
+Failed example:
+    m.predict('c')
+Expected:
+    Traceback (most recent call last):
+      ...
+    KeyError
+Got:
+    42
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 19, in __main__
+Failed example:
+    test_predict(m, 20, 'F', 4)
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest __main__[6]>", line 1, in <module>
+        test_predict(m, 20, 'F', 4)
+      File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 197, in test_predict
+        start = ''.join(res)[-size:]
+    TypeError: sequence item 1: expected str instance, int found
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 25, in __main__
+Failed example:
+    test_predict(m2, 100, 'T', 4)
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest __main__[9]>", line 1, in <module>
+        test_predict(m2, 100, 'T', 4)
+      File "/Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py", line 197, in test_predict
+        start = ''.join(res)[-size:]
+    TypeError: sequence item 1: expected str instance, int found
+**********************************************************************
+1 items had failures:
+   4 of  10 in __main__
+***Test Failed*** 4 failures.
+>>> Markov
+<class '__main__.Markov'>
+>>> print(Markov)
+<class '__main__.Markov'>
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/pycon-2017/adv-markov/markov.py 
+EXECUTED
+>>> print(Markov)
+<class '__main__.Markov'>
+>>> Markov
+<class '__main__.Markov'>
+>>> Markov.__str__
+<function just_name.<locals>.name at 0x10b031840>
+>>> Markov.__str__()
+Traceback (most recent call last):
+  File "<pyshell#192>", line 1, in <module>
+    Markov.__str__()
+TypeError: name() missing 1 required positional argument: 'self'
+>>> Markov.__str__
+<function just_name.<locals>.name at 0x10b031840>
+>>> m = Markov(['abc'])
+>>> m
+<__main__.Markov object at 0x10aff02e8>
+>>> print(m)
+Markov
+>>> lines = ['hello world', 'bye matt']
+>>> chars = []
+>>> for line in lines:
+	for c in line:
+		chars.append(c)
+
+		
+>>> chars
+['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', 'b', 'y', 'e', ' ', 'm', 'a', 't', 't']
+>>> chars = [c for line in lines for c in line]
+>>> chars
+['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', 'b', 'y', 'e', ' ', 'm', 'a', 't', 't']
+>>> lines = ['Hello world', 'Chapter 1', 'It was a']
+>>> new_lines = []
+>>> for line in lines:
+	if not line.startswith('Chapter'):
+		new_lines.append(line)
+
+		
+>>> new_lines
+['Hello world', 'It was a']
+>>> new_lines = [line for line in lines if not line.startswith('Chapter')]
+>>> new_lines
+['Hello world', 'It was a']
+>>> for line in lines:
+	if not line.startswith('Chapter'):
+		new_lines.append(line)
+
+		
+>>> new_lines = []
+>>> for line in lines:
+	if not line.startswith('Chapter'):
+		new_lines.append(line.upper())
+
+		
+>>> new_lines
+['HELLO WORLD', 'IT WAS A']
+>>> map(lambda x: x.upper(), lines)
+<map object at 0x1095985c0>
+>>> lines(map(lambda x: x.upper(), lines))
+Traceback (most recent call last):
+  File "<pyshell#222>", line 1, in <module>
+    lines(map(lambda x: x.upper(), lines))
+TypeError: 'list' object is not callable
+>>> list(map(lambda x: x.upper(), lines))
+['HELLO WORLD', 'CHAPTER 1', 'IT WAS A']
+>>> new_lines = [line.upper() for line in lines if not line.startswith('Chapter')]
+>>> 
+>>> new_lines
+['HELLO WORLD', 'IT WAS A']
+>>> new_lines = (line.upper() for line in lines if not line.startswith('Chapter'))
+>>> new_lines
+<generator object <genexpr> at 0x10b044a40>
+>>> it = iter(new_lines)
+>>> next(it)
+'HELLO WORLD'
+>>> next(it)
+'IT WAS A'
+>>> next(it)
+Traceback (most recent call last):
+  File "<pyshell#232>", line 1, in <module>
+    next(it)
+StopIteration
+>>> new_lines = (line.upper() for line in lines if not line.startswith('Chapter'))
+>>> dir(new_lines)
+['__class__', '__del__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__name__', '__ne__', '__new__', '__next__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'close', 'gi_code', 'gi_frame', 'gi_running', 'gi_yieldfrom', 'send', 'throw']
+>>> new_lines
+<generator object <genexpr> at 0x10b044af0>
+>>> iter(new_lines)
+<generator object <genexpr> at 0x10b044af0>
+>>> next(new_lines)
+'HELLO WORLD'
+>>> with open('ts.txt') as fin:
+	line1 = next(fin)
+	line2= next(fin)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#241>", line 2, in <module>
+    line1 = next(fin)
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py", line 321, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x93 in position 1142: invalid start byte
+>>> with open('ts.txt', encoding='windows_1252') as fin:
+	line1 = next(fin)
+	line2= next(fin)
+
+	
+>>> line1
+'\n'
+>>> line2
+'The Project Gutenberg EBook of The Adventures of Tom Sawyer, Complete by\n'
+>>> fin
+<_io.TextIOWrapper name='ts.txt' mode='r' encoding='windows_1252'>
+>>> line3 = next(fin)
+Traceback (most recent call last):
+  File "<pyshell#247>", line 1, in <module>
+    line3 = next(fin)
+ValueError: I/O operation on closed file.
+>>> fin
+<_io.TextIOWrapper name='ts.txt' mode='r' encoding='windows_1252'>
+>>> id(fin)
+4479338464
+>>> dir(fin)
+['_CHUNK_SIZE', '__class__', '__del__', '__delattr__', '__dict__', '__dir__', '__doc__', '__enter__', '__eq__', '__exit__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__ne__', '__new__', '__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '_checkClosed', '_checkReadable', '_checkSeekable', '_checkWritable', '_finalizing', 'buffer', 'close', 'closed', 'detach', 'encoding', 'errors', 'fileno', 'flush', 'isatty', 'line_buffering', 'mode', 'name', 'newlines', 'read', 'readable', 'readline', 'readlines', 'seek', 'seekable', 'tell', 'truncate', 'writable', 'write', 'writelines']
+>>> import time
+>>> class stopwatch:
+	def __enter__(self):
+		self.start = time.time()
+	def __exit__(self, *args):
+		print('Took {} seconds'.format(time.time() - self.start))
+
+		
+>>> with stopwatch():
+	pass
+
+Took 4.0531158447265625e-06 seconds
+>>> with stopwatch():
+	time.sleep(5)
+
+	
+Took 5.001406908035278 seconds
+>>> import contextlib
+>>> @contextlib.contextmanager
+def timer():
+	start = time.time()
+	try:
+		yield
+	finally:
+		print("TOOK {} Seconds".format(time.time() - start))
+
+		
+>>> time
+<module 'time' (built-in)>
+>>> timer
+<function timer at 0x10b03eae8>
+>>> with timer():
+	time.sleep(5)
+
+	
+TOOK 5.000734090805054 Seconds
+
+
+
+
+>>> 
